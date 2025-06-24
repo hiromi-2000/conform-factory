@@ -1,8 +1,8 @@
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 
+import { cleanup } from '@testing-library/react';
 // React Testing Library + Vitestのセットアップ
-import { beforeAll, afterEach, vi } from "vitest";
-import { cleanup } from "@testing-library/react";
+import { afterEach, beforeAll, vi } from 'vitest';
 
 // 各テスト後にクリーンアップ
 afterEach(() => {
@@ -26,9 +26,9 @@ beforeAll(() => {
   }));
 
   // window.matchMedia mock
-  Object.defineProperty(window, "matchMedia", {
+  Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: vi.fn().mockImplementation((query) => ({
+    value: vi.fn().mockImplementation(query => ({
       matches: false,
       media: query,
       onchange: null,

@@ -20,14 +20,25 @@
         "noExcessiveCognitiveComplexity": "warn"
       },
       "correctness": {
-        "noUnusedVariables": "off"
+        "noUnusedVariables": "off",
+        "noUnusedImports": "warn"
       },
       "style": {
-        "noNonNullAssertion": "warn",
+        "noNonNullAssertion": "off",
         "useConst": "error"
       },
       "suspicious": {
         "noExplicitAny": "off"
+      },
+      "security": {
+        "noBlankTarget": "warn"
+      },
+      "a11y": {
+        "useButtonType": "warn",
+        "noSvgWithoutTitle": "off"
+      },
+      "nursery": {
+        "useUniqueElementIds": "off"
       }
     }
   },
