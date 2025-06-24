@@ -10,6 +10,7 @@ React + Conformライブラリを使用してFactory Patternを実装し、動�
 - **@conform-to/react** - フォーム状態管理・バリデーション
 - **@conform-to/zod** - スキーマバリデーション
 - **Zod v4** - TypeScript用スキーマバリデーション（最新版）
+- **React Aria** - アクセシブルなUIコンポーネント・プリミティブ
 - **TypeScript** - 型安全性
 - **Vite** - ビルドツール・開発サーバー
 - **Vitest** - テストフレームワーク
@@ -43,6 +44,7 @@ pnpm install react@19 react-dom@19
 ```bash
 # Core dependencies
 pnpm add @conform-to/react @conform-to/zod zod@4
+pnpm add react-aria-components @react-aria/utils
 
 # Linting & Formatting
 pnpm add -D eslint@9 @eslint/js @typescript-eslint/eslint-plugin@8 @typescript-eslint/parser@8
@@ -150,27 +152,30 @@ import storybook from 'eslint-plugin-storybook';
 - [ ] 新しいConcurrent機能の調査・実装
 - [ ] React 19機能の動作確認
 
-#### 2. 基本フィールドコンポーネント
-- [ ] `components/fields/InputField.tsx` - テキスト入力フィールド
-- [ ] `components/fields/SelectField.tsx` - セレクトボックス
-- [ ] `components/fields/TextareaField.tsx` - テキストエリア
-- [ ] `components/fields/CheckboxField.tsx` - チェックボックス
-- [ ] `components/fields/FileField.tsx` - ファイルアップロード
-- [ ] フィールドコンポーネントの共通化
+#### 2. React Ariaベースフィールドコンポーネント
+- [ ] `components/fields/InputField.tsx` - React Ariaベーステキスト入力
+- [ ] `components/fields/SelectField.tsx` - React Ariaベースセレクトボックス
+- [ ] `components/fields/TextareaField.tsx` - React Ariaベーステキストエリア
+- [ ] `components/fields/CheckboxField.tsx` - React Ariaベースチェックボックス
+- [ ] `components/fields/FileField.tsx` - React Ariaベースファイルアップロード
+- [ ] React Ariaプリミティブの統合確認
+- [ ] アクセシビリティ対応の動作確認
 
 ```typescript
-// components/fields/InputField.tsx
-// components/fields/SelectField.tsx
-// components/fields/TextareaField.tsx
-// components/fields/CheckboxField.tsx
-// components/fields/FileField.tsx
+// components/fields/InputField.tsx - React Ariaベース
+// components/fields/SelectField.tsx - React Ariaベース
+// components/fields/TextareaField.tsx - React Ariaベース
+// components/fields/CheckboxField.tsx - React Ariaベース
+// components/fields/FileField.tsx - React Ariaベース
 ```
 
-#### 3. Conformフォーム統合
-- [ ] エラーハンドリング実装
+#### 3. Conform + React Ariaフォーム統合
+- [ ] Conform × React Ariaの統合実装
+- [ ] エラーハンドリング実装（React Ariaのエラー表示活用）
 - [ ] リアルタイムバリデーション実装
 - [ ] フォーム状態管理実装
-- [ ] Conform統合テスト
+- [ ] アクセシビリティ対応確認
+- [ ] Conform + React Aria統合テスト
 
 ### フェーズ5: 動的フォーム実装（4日目）
 
