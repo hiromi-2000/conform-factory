@@ -1,4 +1,4 @@
-export { InputField } from "./InputField";
-export { SelectField } from "./SelectField";
-export { TextareaField } from "./TextareaField";
-export { CheckboxField } from "./CheckboxField";
+export { InputField } from "./input-field";
+export { SelectField } from "./select-field";
+export { TextareaField } from "./textarea-field";
+export { CheckboxField } from "./checkbox-field";
