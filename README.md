@@ -43,18 +43,6 @@ pnpm dev
 pnpm storybook
 ```
 
-## 📚 ドキュメント
-
-### 📖 開発ガイド
-- [🤝 Contributing Guidelines](./docs/CONTRIBUTING.md) - 開発への参加方法
-- [🎨 Code Style Guide](./docs/CODE_STYLE.md) - コーディング規約
-- [🌿 Git Workflow](./docs/GIT_WORKFLOW.md) - Git運用ルール
-- [🧪 Testing Strategy](./docs/TESTING.md) - テスト戦略
-
-### 📋 プロジェクト管理
-- [📅 Implementation Plan](./IMPLEMENTATION_PLAN.md) - 実装計画書（進捗管理付き）
-- [⚖️ Code of Conduct](./docs/CODE_OF_CONDUCT.md) - 行動規範
-
 ## 🏗️ プロジェクト構造
 
 ```
@@ -62,58 +50,11 @@ conform-factory/
 ├── docs/                    # ドキュメント
 ├── src/                     # ソースコード
 │   ├── components/          # コンポーネント
-│   ├── factories/           # Factory Pattern実装
+│   ├── factory/             # Factory Pattern実装
 │   ├── schemas/             # Zodスキーマ
 │   ├── types/               # TypeScript型定義
-│   ├── hooks/               # カスタムHooks
-│   └── stories/             # Storybookストーリー
+│   └── hooks/               # カスタムHooks
 ├── tests/                   # テストファイル
 ├── .github/                 # GitHub設定
 └── .storybook/              # Storybook設定
 ```
-
-## 🎯 主要機能
-
-### Factory Pattern による動的フォーム生成
-- 設定ベースのフォーム生成
-- 複数のフォームタイプに対応
-- 型安全な実装
-
-### 包括的な開発環境
-- リアルタイムバリデーション
-- コンポーネント駆動開発
-- 自動テスト・品質管理
-
-## 🤝 コントリビューション
-
-このプロジェクトへの貢献を歓迎します！
-
-1. [Contributing Guidelines](./docs/CONTRIBUTING.md) をお読みください
-2. Issue を作成するか、既存の Issue を確認してください
-3. フィーチャーブランチを作成してください
-4. 変更を実装し、テストを追加してください
-5. Pull Request を作成してください
-
-## 📊 進捗状況
-
-実装の進捗は [Implementation Plan](./IMPLEMENTATION_PLAN.md) で確認できます。
-
-- ✅ プロジェクトルール整備完了
-- 🔄 フェーズ1: 環境セットアップ（準備中）
-- ⏳ フェーズ2〜8: 実装予定
-
-## 📄 ライセンス
-
-MIT License - 詳細は [LICENSE](./LICENSE) ファイルをご覧ください。
-
-## 🙏 謝辞
-
-このプロジェクトは以下のライブラリとツールによって支えられています：
-- [Conform](https://github.com/edmundhung/conform) - エドマンド・ハング氏による素晴らしいフォームライブラリ
-- [React Team](https://react.dev/) - React 19の革新的な機能
-- [TypeScript Team](https://www.typescriptlang.org/) - 型安全性の向上
-- その他多くのオープンソースプロジェクト
-
----
-
-**Happy Coding!** 🎉
