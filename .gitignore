@@ -1,3 +1,5 @@
+.cursor
+
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -141,3 +143,5 @@ playwright/.cache/
 
 # Turbo
 .turbo 
+
+*storybook.log
