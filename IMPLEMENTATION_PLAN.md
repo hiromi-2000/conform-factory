@@ -8,7 +8,7 @@ React + Conformライブラリを使用したFactory Patternの優秀性を実�
 
 ## 📍 プロジェクトのゴール
 
-1. **formFactory.tsxの有効性証明** - 型安全で再利用可能なフォームファクトリーの実装
+1. **formFactoryの有効性証明** - 型安全で再利用可能なフォームファクトリーの実装
 2. **スキーマベース設計の優位性** - Zod v4スキーマとformFactoryの完璧な連携
 3. **開発者体験の向上** - 複雑なフォームロジックを簡単に実装できることの証明
 4. **実用的なデモ** - 実際のユースケースでformFactoryの利点を実演
@@ -46,10 +46,10 @@ React + Conformライブラリを使用したFactory Patternの優秀性を実�
 **📦 実装完了項目:**
 - [x] 4つのZod v4スキーマ（ユーザー、商品、お問い合わせ、動的フォーム）
 - [x] 122テストケース完備（網羅的バリデーション）
-- [x] `formFactory.tsx` - **🌟 プロジェクトの主役！型安全なFactory Pattern**
+- [x] `formFactory/index.tsx` - **🌟 プロジェクトの主役！型安全なFactory Pattern**
 - [x] `form.tsx` - React Aria統合フォームコンポーネント
 
-**🎯 formFactory.tsxの素晴らしさ:**
+**🎯 formFactoryの素晴らしさ:**
 ```typescript
 // スキーマベースで型安全なフォームファクトリー
 const { useForm, useField, Form } = formFactory(userSchema);
@@ -67,7 +67,7 @@ const [nameField] = useField(fields.name.name);
 
 ### フェーズ4: formFactoryで実際のフォーム実装（3日目）
 
-**🌟 目的: formFactory.tsxの優秀性を実証**
+**🌟 目的: formFactoryの優秀性を実証**
 
 #### 1. 基本フィールドコンポーネント実装
 - [ ] `components/fields/InputField.tsx` - Conform + React Aria統合
@@ -125,8 +125,8 @@ conform-factory/
 │   │   ├── forms/           # フォームコンポーネント
 │   │   ├── fields/          # フィールドコンポーネント
 │   │   └── ui/              # 共通UIコンポーネント
-│   ├── factories/           # Factory Pattern実装
-│   │   ├── formFactory.tsx  # メインファクトリー
+│   ├── formFactory/         # Factory Pattern実装
+│   │   ├── index.tsx        # メインファクトリー
 │   │   └── form.tsx         # React Aria統合
 │   ├── schemas/             # Zod v4スキーマ
 │   │   ├── __tests__/       # テストファイル
