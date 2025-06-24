@@ -82,7 +82,7 @@ export const dynamicFieldSchema = z.object({
     .max(100, "フィールド名は100文字以内で入力してください"),
 
   type: z.enum(fieldTypes, {
-    errorMap: () => ({ message: "フィールドタイプを選択してください" }),
+    message: "フィールドタイプを選択してください",
   }),
 
   label: z
@@ -220,8 +220,24 @@ export const dynamicFormConfigSchema = z
           .max(500, "ARIA説明は500文字以内で入力してください")
           .optional(),
       })
-      .default({}),
-
+      .default({
+        submitButtonText: "送信",
+        resetButtonText: "リセット",
+        enableReset: true,
+        enableDraft: false,
+        autoSave: false,
+        autoSaveInterval: 30,
+        validateOnBlur: true,
+        validateOnChange: false,
+        showErrorSummary: true,
+        layout: "vertical",
+        columns: 1,
+        spacing: "normal",
+        theme: "default",
+        customCss: "",
+        ariaLabel: "",
+        ariaDescription: "",
+      }),
     // メタデータ
     metadata: z
       .object({
@@ -237,7 +253,10 @@ export const dynamicFormConfigSchema = z
           .max(10, "タグは最大10個まで設定できます")
           .default([]),
       })
-      .default({}),
+      .default({
+        version: "1.0.0",
+        tags: [],
+      }),
   })
   .refine(
     (data) => {
