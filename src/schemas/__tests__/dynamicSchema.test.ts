@@ -14,8 +14,6 @@ import {
   fieldTypes,
   validationRuleTypes,
   type DynamicFieldConfig,
-  type DynamicFormConfig,
-  type DynamicFormData,
 } from "../dynamicSchema";
 
 describe("dynamicFieldSchema", () => {
