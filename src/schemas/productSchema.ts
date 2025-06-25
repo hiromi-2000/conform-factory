@@ -26,6 +26,9 @@ export const productConditions = [
 // 商品登録フォームスキーマ
 export const productRegistrationSchema = z
   .object({
+    // Intent - Conform intent button用
+    intent: z.enum(["submit", "draft"]).optional(),
+
     // 基本情報
     name: z
       .string()

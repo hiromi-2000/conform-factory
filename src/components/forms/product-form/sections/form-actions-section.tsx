@@ -2,13 +2,9 @@ import { useProductFormMetadata } from "../product-form-utilities";
 
 interface FormActionsSectionProps {
   onReset: () => void;
-  onSaveDraft?: () => void;
 }
 
-export const FormActionsSection = ({
-  onReset,
-  onSaveDraft,
-}: FormActionsSectionProps) => {
+export const FormActionsSection = ({ onReset }: FormActionsSectionProps) => {
   const formMetadata = useProductFormMetadata();
 
   // Conform FormMetadataから必要な情報を計算
@@ -67,15 +63,15 @@ export const FormActionsSection = ({
 
         {/* アクションボタン */}
         <div className="flex gap-3">
-          {onSaveDraft && (
-            <button
-              type="button"
-              onClick={onSaveDraft}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-            >
-              下書き保存
-            </button>
-          )}
+          {/* Conform intent button - 下書き保存 */}
+          <button
+            type="submit"
+            name="intent"
+            value="draft"
+            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+          >
+            下書き保存
+          </button>
 
           <button
             type="button"
@@ -85,8 +81,11 @@ export const FormActionsSection = ({
             リセット
           </button>
 
+          {/* Conform intent button - 正式登録 */}
           <button
             type="submit"
+            name="intent"
+            value="submit"
             disabled={isSubmitting}
             className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
           >

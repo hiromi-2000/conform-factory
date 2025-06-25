@@ -141,7 +141,7 @@ const [form, fields] = useForm({
 - **複雑なネストされたオブジェクト**: `dimensions.getFieldset().length`, `weight.getFieldset().value`
 - **配列フィールド**: `images[]`, `tags[]` 
 - **条件付きバリデーション**: 販売価格 < 定価
-- **部分的スキーマ**: 下書き保存用の`productRegistrationPartialSchema`
+- **Intent Button**: [intent button](https://conform.guide/intent-button)で下書き保存と正式登録 🎯
 - **Conform準拠**: [complex structures](https://conform.guide/complex-structures)に完全対応 ✅
 
 **DRY原則 + 型安全性 + 再利用性 + 美しいUI = 最高の開発者体験**

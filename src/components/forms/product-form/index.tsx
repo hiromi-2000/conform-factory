@@ -41,28 +41,32 @@ export const ProductForm = ({
     onSubmit(event, { formData }) {
       event.preventDefault();
 
-      // formFactoryで既にバリデーション済みなので、parseWithZodで最終確認
-      const submission = parseWithZod(formData, {
-        schema: productRegistrationSchema,
-      });
+      // [Conform intent button機能使用](https://conform.guide/intent-button)
+      const intent = formData.get("intent");
 
-      if (submission.status === "success" && onSubmit) {
-        onSubmit(submission.value);
+      switch (intent) {
+        case "submit": {
+          // 正式な商品登録
+          const submission = parseWithZod(formData, {
+            schema: productRegistrationSchema,
+          });
+          if (submission.status === "success" && onSubmit) {
+            onSubmit(submission.value);
+          }
+          break;
+        }
+
+        case "draft": {
+          // 下書き保存（バリデーション不要）
+          if (onSaveDraft) {
+            const entries = Object.fromEntries(formData.entries());
+            onSaveDraft(entries as Partial<ProductRegistrationData>);
+          }
+          break;
+        }
       }
     },
   });
-
-  const handleSaveDraft = () => {
-    if (onSaveDraft) {
-      const formElement = document.getElementById(form.id) as HTMLFormElement;
-      if (formElement) {
-        const formData = new FormData(formElement);
-        // 部分的なデータとして保存（バリデーションをスキップ）
-        const entries = Object.fromEntries(formData.entries());
-        onSaveDraft(entries as Partial<ProductRegistrationData>);
-      }
-    }
-  };
 
   return (
     <div className={twMerge("max-w-4xl mx-auto p-8", className)}>
@@ -89,10 +93,7 @@ export const ProductForm = ({
         </div>
 
         {/* useFormMetadataを活用したアクションセクション */}
-        <FormActionsSection
-          onReset={() => form.reset()}
-          onSaveDraft={handleSaveDraft}
-        />
+        <FormActionsSection onReset={() => form.reset()} />
       </ProductFormBase>
     </div>
   );
