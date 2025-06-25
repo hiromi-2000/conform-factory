@@ -3,8 +3,7 @@ import {
   Form as AriaForm,
   type FormProps as AriaFormProps,
 } from "react-aria-components";
-import type { FormSchema } from "../schemas/types";
-import type { FormType } from ".";
+import type { FormSchema, FormType } from "./type";
 
 type FormProps<T extends FormSchema> = AriaFormProps & {
   form: ReturnType<FormType<T>>[0];
