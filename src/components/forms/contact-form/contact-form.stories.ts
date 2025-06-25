@@ -1,4 +1,4 @@
-/* eslint-disable no-console, @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ContactForm } from ".";
 import type { ContactFormData } from "../../../schemas/contactSchema";
