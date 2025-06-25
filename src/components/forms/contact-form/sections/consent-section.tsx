@@ -1,10 +1,10 @@
 import { CheckboxField } from "../../../fields";
-import { useField } from "../create-form";
+import { useContactField } from "../contract-form-utilities";
 
 export const ConsentSection = () => {
-  const [allowMarketingEmailsField] = useField("allowMarketingEmails");
-  const [subscribeToNewsletterField] = useField("subscribeToNewsletter");
-  const [privacyPolicyAcceptedField] = useField("privacyPolicyAccepted");
+  const [allowMarketingEmailsField] = useContactField("allowMarketingEmails");
+  const [subscribeToNewsletterField] = useContactField("subscribeToNewsletter");
+  const [privacyPolicyAcceptedField] = useContactField("privacyPolicyAccepted");
 
   return (
     <div className="space-y-6">

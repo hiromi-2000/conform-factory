@@ -1,15 +1,15 @@
 import { InputField, SelectField, TextareaField } from "../../../fields";
-import { useField } from "../create-form";
+import { useContactField } from "../contract-form-utilities";
 import {
   contactTypes,
   priorityLevels,
 } from "../../../../schemas/contactSchema";
 
 export const ContactContentSection = () => {
-  const [contactTypeField] = useField("contactType");
-  const [priorityField] = useField("priority");
-  const [subjectField] = useField("subject");
-  const [messageField] = useField("message");
+  const [contactTypeField] = useContactField("contactType");
+  const [priorityField] = useContactField("priority");
+  const [subjectField] = useContactField("subject");
+  const [messageField] = useContactField("message");
 
   // お問い合わせ種別のオプション
   const contactTypeOptions = contactTypes.map((type) => ({

@@ -1,11 +1,11 @@
 import { InputField, SelectField } from "../../../fields";
-import { useField } from "../create-form";
+import { useContactField } from "../contract-form-utilities";
 
 export const BasicInfoSection = () => {
-  const [firstNameField] = useField("firstName");
-  const [lastNameField] = useField("lastName");
-  const [emailField] = useField("email");
-  const [contactTypeField] = useField("contactType");
+  const [firstNameField] = useContactField("firstName");
+  const [lastNameField] = useContactField("lastName");
+  const [emailField] = useContactField("email");
+  const [contactTypeField] = useContactField("contactType");
 
   return (
     <section className="space-y-6">

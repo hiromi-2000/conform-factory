@@ -4,7 +4,10 @@ import {
 } from "../../../schemas/contactSchema";
 import { parseWithZod } from "@conform-to/zod/v4";
 import { twMerge } from "tailwind-merge";
-import { Form, useForm } from "./create-form";
+import {
+  ContactForm as ContactFormBase,
+  useContactForm,
+} from "./contract-form-utilities";
 import {
   BasicInfoSection,
   ContactContentSection,
@@ -25,7 +28,7 @@ export const ContactForm = ({
   title = "お問い合わせ",
 }: ContactFormProps) => {
   // formFactory使用 - 型安全で簡潔！
-  const [form] = useForm({
+  const [form] = useContactForm({
     // [Conformドキュメント参考](https://ja.conform.guide/validation)
     // クライアントサイドバリデーション設定
     shouldValidate: "onBlur",
@@ -51,7 +54,7 @@ export const ContactForm = ({
       </div>
 
       {/* formFactoryで生成されたFormコンポーネント */}
-      <Form
+      <ContactFormBase
         form={form}
         className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
       >
@@ -65,7 +68,7 @@ export const ContactForm = ({
 
         {/* useFormMetadataを活用したアクションセクション */}
         <FormActionsSection onReset={() => form.reset()} />
-      </Form>
+      </ContactFormBase>
     </div>
   );
 };

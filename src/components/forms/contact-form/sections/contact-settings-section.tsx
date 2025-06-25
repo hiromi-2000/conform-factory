@@ -1,9 +1,11 @@
 import { InputField, SelectField } from "../../../fields";
-import { useField } from "../create-form";
+import { useContactField } from "../contract-form-utilities";
 
 export const ContactSettingsSection = () => {
-  const [preferredContactMethodField] = useField("preferredContactMethod");
-  const [bestTimeToContactField] = useField("bestTimeToContact");
+  const [preferredContactMethodField] = useContactField(
+    "preferredContactMethod"
+  );
+  const [bestTimeToContactField] = useContactField("bestTimeToContact");
 
   // 希望連絡方法のオプション
   const contactMethodOptions = [

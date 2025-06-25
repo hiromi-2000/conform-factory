@@ -28,7 +28,10 @@ export type FormMetadataType<T extends FormSchema> = typeof useFormMetadata<
   FormError
 >;
 
-export const formFactory = <T extends FormSchema>(schema: T) => {
+export const formFactory = <T extends FormSchema, F extends string>(
+  schema: T,
+  formName: F
+) => {
   const useTypedForm = (
     options: Omit<Parameters<FormType<typeof schema>>[0], "onValidate">
   ) => {
@@ -58,9 +61,17 @@ export const formFactory = <T extends FormSchema>(schema: T) => {
   const useTypedFormMetadata = useFormMetadata<z.output<T>, FormError>;
 
   return {
-    useForm: useTypedForm,
-    useField: useTypedField,
-    Form: Form<T>,
-    useFormMetadata: useTypedFormMetadata,
+    [`use${formName}Form`]: useTypedForm,
+    [`use${formName}Field`]: useTypedField,
+    [`${formName}Form`]: Form<T>,
+    [`use${formName}FormMetadata`]: useTypedFormMetadata,
+  } as {
+    [K in `use${F}Form`]: typeof useTypedForm;
+  } & {
+    [K in `use${F}Field`]: typeof useTypedField;
+  } & {
+    [K in `${F}Form`]: typeof Form<T>;
+  } & {
+    [K in `use${F}FormMetadata`]: typeof useTypedFormMetadata;
   };
 };

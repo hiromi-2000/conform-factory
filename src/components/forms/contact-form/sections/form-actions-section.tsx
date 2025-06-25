@@ -1,13 +1,13 @@
 import { Button } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
-import { useFormMetadata } from "../create-form";
+import { useContactFormMetadata } from "../contract-form-utilities";
 
 interface FormActionsSectionProps {
   onReset: () => void;
 }
 
 export const FormActionsSection = ({ onReset }: FormActionsSectionProps) => {
-  const form = useFormMetadata();
+  const form = useContactFormMetadata();
 
   return (
     <>

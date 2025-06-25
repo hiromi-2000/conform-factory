@@ -65,6 +65,7 @@ export const userRegistrationSchema = z
 
     interests: z.array(z.string()).optional(),
   })
+  .describe("userRegistrationSchema")
   .refine((data) => data.password === data.confirmPassword, {
     message: "パスワードが一致しません",
     path: ["confirmPassword"],
