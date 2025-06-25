@@ -1,5 +1,3 @@
-import type { FormSchema } from "./types";
-
 // ユーザー登録スキーマ
 export {
   userRegistrationSchema,
