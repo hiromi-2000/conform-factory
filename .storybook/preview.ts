@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
-import "../src/index.css"; // Tailwind CSSを読み込み
+import "../src/global.css"; // Tailwind CSSを読み込み
 
 const preview: Preview = {
   parameters: {

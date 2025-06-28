@@ -18,28 +18,38 @@ Conform Factory プロジェクトのコーディング規約です。
 
 ### ファイル・ディレクトリ
 ```
-components/
-├── forms/
-│   ├── UserRegistrationForm.tsx    # PascalCase
-│   └── ProductRegistrationForm.tsx
-├── fields/
-│   ├── InputField.tsx
-│   └── SelectField.tsx
-└── ui/
-    ├── Button.tsx
-    └── Modal.tsx
-
-hooks/
-├── useFormFactory.ts               # camelCase
-└── useConformFactory.ts
-
-types/
-├── formTypes.ts                    # camelCase
-└── factoryTypes.ts
-
-utils/
-├── formUtils.ts                    # camelCase
-└── validationUtils.ts
+src/
+├── components/
+│   ├── fields/
+│   │   ├── checkbox-field.tsx      # kebab-case
+│   │   ├── input-field.tsx
+│   │   ├── select-field.tsx
+│   │   └── textarea-field.tsx
+│   └── forms/
+│       ├── organization-form/
+│       │   └── index.tsx
+│       └── user-form/
+│           ├── index.tsx           # メインコンポーネント
+│           ├── user-form-schema.ts # スキーマ定義
+│           ├── user-form-utilities.ts
+│           └── user-form.stories.tsx
+├── lib/
+│   ├── conform/
+│   │   ├── _form-factory/
+│   │   │   ├── form.tsx
+│   │   │   └── type.ts
+│   │   └── createForm.tsx
+│   └── zod/
+│       └── customError.ts
+├── hooks/
+│   ├── useFormFactory.ts           # camelCase
+│   └── useConformFactory.ts
+├── types/
+│   ├── formTypes.ts                # camelCase
+│   └── factoryTypes.ts
+└── utils/
+    ├── formUtils.ts                # camelCase
+    └── validationUtils.ts
 ```
 
 ### コンポーネント・関数
@@ -171,7 +181,7 @@ if (isUserForm(form)) {
 }
 ```
 
-## 📦 Import 規約
+## 📦 Import・Export 規約
 
 ### Import 順序
 ```typescript
@@ -185,25 +195,48 @@ import { z } from 'zod'
 
 // 3. 内部（絶対パス推奨）
 import type { FormConfig } from '@/types/formTypes'
-import { FormFactory } from '@/factories/FormFactory'
-import { Button } from '@/components/ui/Button'
+import { FormFactory } from '@/lib/factories/FormFactory'
+import { InputField } from '@/components/fields/input-field'
 
 // 4. 相対パス（同階層のみ）
 import './Component.css'
 ```
 
 ### Export 規約
+
+#### ✅ 推奨パターン
 ```typescript
-// ✅ 名前付きエクスポート推奨
-export { UserForm } from './UserForm'
-export { ProductForm } from './ProductForm'
+// 直接インポート（推奨）
+import { InputField } from '@/components/fields/input-field'
+import { UserForm } from '@/components/forms/user-form'
 
-// ✅ デフォルトエクスポート（ページコンポーネントのみ）
+// 名前付きエクスポート
+export { UserForm } from './user-form'
+export { ProductForm } from './product-form'
+
+// デフォルトエクスポート（ページコンポーネントのみ）
 export default function HomePage() { ... }
-
-// ❌ 避ける
-export default UserForm  // 通常のコンポーネントでは避ける
 ```
+
+#### ❌ 禁止パターン
+
+```typescript
+// ❌ バレルエクスポート禁止
+// src/components/fields/index.ts
+export { InputField } from './input-field'
+export { SelectField } from './select-field'
+export { CheckboxField } from './checkbox-field'
+
+// ❌ バレルエクスポートからの一括インポート
+import { InputField, SelectField } from '@/components/fields'
+```
+
+#### バレルエクスポート禁止の理由
+1. **Bundle Size**: 不要なコードも含まれる可能性
+2. **Tree Shaking**: バンドラーの最適化を阻害
+3. **開発体験**: 実際のファイル場所が不明確
+4. **パフォーマンス**: インポート解決の負荷増大
+5. **循環依存**: 依存関係の複雑化
 
 ## 🧪 テスト規約
 
