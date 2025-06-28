@@ -25,5 +25,5 @@ export const testFormSchema = z.object({
 
   // DatePickerField用
   dateInput: z.date().optional(),
-  requiredDateInput: z.date({ required_error: "日付の選択は必須です" }),
+  requiredDateInput: z.date({ error: "日付の選択は必須です" }),
 });

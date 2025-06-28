@@ -1,10 +1,14 @@
-# Conform Factory Demo
+# Rect Conform Factory Demo
 
 React + Conform を用いた Factory Pattern デモプロジェクト
 
 ## 📋 プロジェクト概要
 
 このプロジェクトは、React 19 と Conform ライブラリを使用して Factory Pattern を実装し、動的フォーム生成のデモンストレーションを行います。
+
+## 🌐 ライブデモ
+
+**[サンプルを確認する](https://hiromi-2000.github.io/react-conform-factory-demo/)**
 
 ### 🎯 主な目標
 - **Factory Pattern** による動的フォーム生成の実装
@@ -37,7 +41,7 @@ pnpm install
 # 開発サーバー起動
 pnpm dev
 
-# Storybook起動
+# Storybook起動e
 pnpm storybook
 ```
 
@@ -48,11 +52,17 @@ conform-factory/
 ├── docs/                    # ドキュメント
 ├── src/                     # ソースコード
 │   ├── components/          # コンポーネント
-│   ├── factory/             # Factory Pattern実装
-│   ├── schemas/             # Zodスキーマ
+│   │   ├── button/          # ボタンコンポーネント
+│   │   └── forms/           # フォーム関連コンポーネント
+│   │       ├── common/      # 共通フォームコンポーネント
+│   │       ├── fields/      # フィールドコンポーネント
+│   │       ├── organization-form/ # (デモ)組織フォーム
+│   │       └── user-form/   # (デモ)ユーザーフォーム
+│   ├── lib/                 # ライブラリ・ユーティリティ
+│   │   ├── conform/         # Conform関連の実装
+│   │   └── zod/             # Zodスキーマ関連
 │   ├── types/               # TypeScript型定義
-│   └── hooks/               # カスタムHooks
-├── tests/                   # テストファイル
-├── .github/                 # GitHub設定
-└── .storybook/              # Storybook設定
+│   └── test/                # テスト設定
+├── .storybook/              # Storybook設定
+└── .github/                 # GitHub設定
 ```

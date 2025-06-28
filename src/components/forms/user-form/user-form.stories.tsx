@@ -8,7 +8,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "ユーザー登録フォーム - userFormSchemaに基づいた包括的なユーザー情報入力フォーム",
+          "ユーザー登録フォーム - userFormSchemaに基づいた包括的なユーザー情報入力フォーム。<br />※idが競合するため、Docsのサンプルは動作しません。",
       },
     },
   },
