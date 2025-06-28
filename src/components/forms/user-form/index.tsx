@@ -1,7 +1,10 @@
 import Button from "@/components/button";
-import { InputField } from "@/components/fields/input-field";
-import { SelectField } from "@/components/fields/select-field";
-import { TextareaField } from "@/components/fields/textarea-field";
+import { InputField } from "@/components/forms/fields/input-field";
+import { SelectField } from "@/components/forms/fields/select-field";
+import { TextareaField } from "@/components/forms/fields/textarea-field";
+import { FormContainer } from "@/components/forms/common/form-container";
+import { FormSection } from "@/components/forms/common/form-section";
+import { FormActions } from "@/components/forms/common/form-actions";
 import { useUserForm, UserForm as Form } from "./user-form-utilities";
 
 const genderOptions = [
@@ -39,15 +42,10 @@ export const UserForm = () => {
   });
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
-        ユーザー登録フォーム
-      </h1>
-
+    <FormContainer title="ユーザー登録フォーム">
       <Form form={form} className="space-y-6">
         {/* 基本情報セクション */}
-        <div className="border-b border-gray-200 pb-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">基本情報</h2>
+        <FormSection title="基本情報">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <InputField
               field={fields.name}
@@ -86,11 +84,10 @@ export const UserForm = () => {
               required
             />
           </div>
-        </div>
+        </FormSection>
 
         {/* 住所情報セクション */}
-        <div className="border-b border-gray-200 pb-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">住所情報</h2>
+        <FormSection title="住所情報">
           <div className="grid grid-cols-1 gap-4">
             <TextareaField
               field={fields.address}
@@ -126,11 +123,10 @@ export const UserForm = () => {
               required
             />
           </div>
-        </div>
+        </FormSection>
 
         {/* 詳細情報セクション */}
-        <div className="border-b border-gray-200 pb-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">詳細情報</h2>
+        <FormSection title="詳細情報">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <SelectField
               field={fields.maritalStatus}
@@ -152,13 +148,10 @@ export const UserForm = () => {
               inputMode="numeric"
             />
           </div>
-        </div>
+        </FormSection>
 
         {/* 趣味セクション */}
-        <div className="pb-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
-            趣味・興味
-          </h2>
+        <FormSection title="趣味・興味">
           <div className="space-y-4">
             <p className="text-sm text-gray-600">
               最大3つまで趣味を追加できます
@@ -226,18 +219,16 @@ export const UserForm = () => {
               </div>
             )}
           </div>
-        </div>
+        </FormSection>
 
         {/* 送信ボタン */}
-        <div className="pt-6 border-t border-gray-200">
-          <div className="flex gap-4">
-            <Button type="submit">登録する</Button>
-            <Button type="button" color="secondary">
-              リセット
-            </Button>
-          </div>
-        </div>
+        <FormActions>
+          <Button type="submit">登録する</Button>
+          <Button type="button" color="secondary">
+            リセット
+          </Button>
+        </FormActions>
       </Form>
-    </div>
+    </FormContainer>
   );
 };

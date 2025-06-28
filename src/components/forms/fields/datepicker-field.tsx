@@ -45,28 +45,29 @@ export const DatePickerField = ({
   const hasError = field.errors && field.errors.length > 0;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-2">
       <DatePicker
         {...props}
         value={value}
         onChange={setValue}
-        className="group w-40 flex flex-col gap-2"
+        className="group flex flex-col gap-2"
+        isInvalid={hasError}
       >
         <Label className="text-sm font-medium text-gray-900 group-disabled:text-gray-400">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </Label>
-        <Group className="flex rounded-lg bg-white/90 focus-within:bg-white group-open:bg-white transition pl-3 shadow-md text-gray-700 focus-visible:ring-2 ring-black">
-          <DateInput className="flex flex-1 py-2">
+        <Group className="border border-gray-300 rounded-md shadow-sm focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 group-invalid:border-red-500 group-invalid:ring-red-500 transition-colors duration-200 bg-white flex">
+          <DateInput className="flex flex-1 px-3 py-2">
             {(segment) => (
               <DateSegment
                 segment={segment}
-                className="px-0.5 tabular-nums outline-hidden rounded-xs focus:bg-violet-700 focus:text-white caret-transparent placeholder-shown:italic"
+                className="px-0.5 tabular-nums outline-none rounded focus:bg-blue-500 focus:text-white caret-transparent placeholder-shown:italic"
               />
             )}
           </DateInput>
-          <Button className="outline-hidden flex items-center text-gray-700 transition border-0 border-solid border-l border-l-purple-200 bg-transparent rounded-r-lg pressed:bg-purple-100 focus-visible:ring-2 ring-black">
-            ↕️
+          <Button className="outline-none flex items-center text-gray-600 transition border-0 border-solid border-l border-l-gray-300 bg-transparent px-3 hover:bg-gray-50 pressed:bg-gray-100 focus-visible:ring-2 focus-visible:ring-blue-500 disabled:bg-gray-50 disabled:text-gray-400">
+            📅
           </Button>
         </Group>
         <MyPopover>
@@ -89,7 +90,7 @@ export const DatePickerField = ({
                   {(date) => (
                     <CalendarCell
                       date={date}
-                      className="w-9 h-9 outline-hidden cursor-default rounded-full flex items-center justify-center outside-month:text-gray-300 hover:bg-gray-100 pressed:bg-gray-200 selected:bg-violet-700 selected:text-white focus-visible:ring-3 ring-violet-600/70 ring-offset-2"
+                      className="w-9 h-9 outline-none cursor-default rounded-full flex items-center justify-center outside-month:text-gray-300 hover:bg-gray-100 pressed:bg-gray-200 selected:bg-blue-500 selected:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     />
                   )}
                 </CalendarGridBody>
@@ -115,7 +116,7 @@ function RoundButton(props: ButtonProps) {
   return (
     <Button
       {...props}
-      className="w-9 h-9 outline-hidden cursor-default bg-transparent text-gray-600 border-0 rounded-full flex items-center justify-center hover:bg-gray-100 pressed:bg-gray-200 focus-visible:ring-3 ring-violet-600/70 ring-offset-2"
+      className="w-9 h-9 outline-none cursor-default bg-transparent text-gray-600 border-0 rounded-full flex items-center justify-center hover:bg-gray-100 pressed:bg-gray-200 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
     />
   );
 }

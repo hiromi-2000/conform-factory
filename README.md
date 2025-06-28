@@ -1,4 +1,4 @@
-# Conform Factory
+# Conform Factory Demo
 
 React + Conform を用いた Factory Pattern デモプロジェクト
 
@@ -8,9 +8,7 @@ React + Conform を用いた Factory Pattern デモプロジェクト
 
 ### 🎯 主な目標
 - **Factory Pattern** による動的フォーム生成の実装
-- **React 19** の最新機能活用
-- **TypeScript** による型安全な実装
-- **最新開発ツール** (ESLint 9, Biome v2, Vitest, Storybook 9) の活用
+- **TypeScript** ConformのHooksに型情報を付与する
 
 ## 🛠️ 技術スタック
 

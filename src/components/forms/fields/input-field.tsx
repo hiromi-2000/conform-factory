@@ -1,7 +1,7 @@
 import type { FieldMetadata } from "@conform-to/react";
-import { getTextareaProps } from "@conform-to/react";
+import { getInputProps } from "@conform-to/react";
 import {
-  TextArea,
+  Input,
   Label,
   TextField,
   Text,
@@ -9,29 +9,29 @@ import {
 } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 
-interface TextareaFieldProps extends Omit<TextFieldProps, "children"> {
+interface InputFieldProps extends Omit<TextFieldProps, "children"> {
   field: FieldMetadata;
   label: string;
   placeholder?: string;
   required?: boolean;
   description?: string;
   className?: string;
-  textareaClassName?: string;
-  rows?: number;
+  inputClassName?: string;
+  shouldShowError?: boolean;
 }
 
-export const TextareaField = ({
+export const InputField = ({
   field,
   label,
   placeholder,
   required = false,
   description,
   className,
-  textareaClassName,
-  rows = 4,
+  inputClassName,
+  shouldShowError = true,
   ...props
-}: TextareaFieldProps) => {
-  const textareaProps = getTextareaProps(field);
+}: InputFieldProps) => {
+  const inputProps = getInputProps(field, { type: "text" });
   const hasError = field.errors && field.errors.length > 0;
 
   return (
@@ -46,18 +46,16 @@ export const TextareaField = ({
         {required && <span className="text-red-500 ml-1">*</span>}
       </Label>
 
-      <TextArea
-        {...textareaProps}
-        rows={rows}
+      <Input
+        {...inputProps}
         placeholder={placeholder}
         className={twMerge(
-          "px-3 py-2 border border-gray-300 rounded-md shadow-sm",
+          "bg-white px-3 py-2 border border-gray-300 rounded-md shadow-sm",
           "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
           "disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200",
           "group-invalid:border-red-500 group-invalid:ring-red-500",
           "transition-colors duration-200",
-          "resize-vertical min-h-[100px]",
-          textareaClassName
+          inputClassName
         )}
       />
 
@@ -67,7 +65,7 @@ export const TextareaField = ({
         </Text>
       )}
 
-      {hasError && (
+      {hasError && shouldShowError && (
         <Text slot="errorMessage" className="text-sm text-red-600">
           {field.errors?.[0]}
         </Text>

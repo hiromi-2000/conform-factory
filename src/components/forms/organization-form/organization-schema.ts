@@ -17,7 +17,7 @@ const employeeSchema = z.object({
 /**
  * @description 部署のスキーマ
  */
-const departmentSchema = z.object({
+export const departmentSchema = z.object({
   name: z.string().min(1),
   employees: z.array(employeeSchema).min(1),
 });
